@@ -1,0 +1,14 @@
+extends layout
+
+block content 
+    //- p #{bicicletas}
+    table.table
+        th Id
+        th Modelo
+        th Ubicacion
+        each bici in bicicletas
+           tr
+            td=bici.id
+            td=bici.modelo
+            td=bici.ubicacion
+        
