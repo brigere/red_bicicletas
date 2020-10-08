@@ -2,6 +2,7 @@ const Bicicleta = require('../../models/bicicleta');
 
 module.exports = {
     bicicleta_list: (req,res)=>{
+        console.log(Bicicleta.allBicis)
         res.status(200).json(Bicicleta.allBicis)
     },
     bicicleta_create: (req,res)=>{

@@ -6,6 +6,19 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+// databaseconnection
+const mongoose = require('mongoose');
+mongoose.connect(
+  'mongodb://localhost:27017/red_bicicletas',
+  {useNewUrlParser: true, useUnifiedTopology: true},
+  ()=>console.log('Database connected')
+  );
+
+mongoose.Promise = global.Promise;
+const db = mongoose.connection;
+db.on('error',console.error.bind(console,'MondoDB connection error: '));
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
