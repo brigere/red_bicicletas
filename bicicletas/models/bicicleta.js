@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const bicicletaSchema = new Schema({
     modelo:String,
     ubicacion:{
+        code:Number,
         type:[Number],
         index:{ type:'2dsphere', sparse:true }
     }
@@ -13,8 +14,9 @@ bicicletaSchema.methods.toString = function(){
     return `Modelo: ${this.modelo}`
 }
 
-bicicletaSchema.statics.createInstance = function(modelo,ubicacion){
+bicicletaSchema.statics.createInstance = function(code,modelo,ubicacion){
     return new this({
+        code:code,
         modelo:modelo,
         ubicacion:ubicacion
     })

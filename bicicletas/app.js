@@ -2,6 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+require('dotenv').config()
 // const logger = require('morgan');
 
 const app = express();
@@ -9,7 +10,7 @@ const app = express();
 // databaseconnection
 const mongoose = require('mongoose');
 mongoose.connect(
-  'mongodb://localhost:27017/red_bicicletas',
+  process.env.DB_HOST || "mongodb://localhost:27017/red_bicicletas",
   {useNewUrlParser: true, useUnifiedTopology: true},
   ()=>console.log('Database connected')
   );
@@ -35,6 +36,7 @@ app.use('/', require('./routes/index'));
 app.use('/users',require('./routes/users'));
 app.use('/bicicletas',require('./routes/bicicletas'));
 app.use('/api/bicicletas',require('./routes/api/biciletaRouterApi'));
+app.use('/api/usuarios',require('./routes/api/usuarioRouterApi'))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
