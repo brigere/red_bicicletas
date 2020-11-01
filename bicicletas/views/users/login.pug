@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .container-fluid.h-100
+        .row
+            .col-md-6.m-auto
+                form.form-signin.mt-4
+                //- img.mb-4(src='' alt='' width='72' height='72')
+                h2.mb-3.font-weight-normal.text-primary Ingresar
+                label.sr-only(for='inputEmail') Email 
+                input#inputEmail.form-control.mb-1(type='email' placeholder='Email address' required='' autofocus='')
+                label.sr-only(for='inputPassword') Password
+                input#inputPassword.form-control(type='password' placeholder='Password' required='')
+                .checkbox.mb-3.mt-2
+                    label
+                    input(type='checkbox' value='remember-me')
+                    |  Recordarme
+                button.mb-3.btn.btn-lg.btn-primary.btn-block(type='submit') Entrar
+                a(href='/register') Registrarse
+
+                p.mt-5.mb-3.text-muted &copy; 2017-2020
