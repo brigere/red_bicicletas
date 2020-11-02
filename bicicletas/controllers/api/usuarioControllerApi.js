@@ -14,8 +14,7 @@ module.exports = {
             e?console.log(e):res.status(200).json({usuario:usuario})
         })
     },
-    usuariosReservar: (req,res)=>{
-        
+    usuariosReservar: (req,res)=>{ 
         Usuario.findById(req.body.userId,(e,usuario)=>{
             if(e){
                 res.send(e)
@@ -24,27 +23,5 @@ module.exports = {
                 res.send(usuario)
             }
         })
-        
-        // try{
-        //     Usuario.findById(req.body.userId,(e,usuario)=>{
-        //         if(e){
-        //             console.log(e)
-        //             res.json({status:'error'})
-        //         }else{
-        //             usuario.reservar(req.body.biciId,req.body.desde,req.body.hasta,(e)=>{
-        //                 if(!e){
-        //                     console.log('Nueva reserva!!')
-        //                     res.status(200).send()
-        //                 }else{
-        //                     console.log(e)
-        //                     res.json({status:'error'})
-        //                 }
-        //             })
-        //         }
-        //     })
-        // }catch(e){
-        //     console.log(e)
-        //     res.json({status:'error'})
-        // } 
     }     
 }
