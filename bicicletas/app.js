@@ -2,23 +2,32 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-require('dotenv').config()
+require('dotenv').config();
+const passport = require('./config/passport');
+const session = require('express-session');
 // const logger = require('morgan');
+const store = new session.MemoryStore;
 
 const app = express();
+app.use(session({
+  cookie:{maxAge:1000*60*60*24*10},
+  store:store,
+  saveUninitialized:true,
+  resave:'true',
+  secret:'r3dBicicleta5'
+}));
 
-// databaseconnection
+// database connection
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 mongoose.connect(
   process.env.DB_HOST || "mongodb://localhost:27017/red_bicicletas",
   {useNewUrlParser: true, useUnifiedTopology: true},
   ()=>console.log('Database connected')
   );
-
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error',console.error.bind(console,'MondoDB connection error: '));
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,6 +38,8 @@ app.set('view engine', 'pug');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
