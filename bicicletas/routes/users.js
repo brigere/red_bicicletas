@@ -11,10 +11,10 @@ router.post('/login',
         console.log(req.body.username+' '+req.body.password)
         passport.authenticate('local',function(err,user,info){
             if(err) return next(err);
-            if(!user) {console.log(user);return res.render('users/login');}
+            if(!user) return res.render('users/login');
+            req.session.userId = user.id
             req.logIn(user,function(e){
                 if(e) return next(e)
-                console.log(res.locals.username)
                 return res.redirect('/')
             })
         })(req,res,next);
