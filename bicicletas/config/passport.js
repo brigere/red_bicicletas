@@ -5,12 +5,12 @@ const Usuario = require('../models/usuario');
 passport.use(new LocalStrategy(
     function(username, password, done) {
         console.log('hola')
-      Usuario.findOne({ nombre: username }, function(err, user) {
+      Usuario.findOne({ email: username }, function(err, user) {
         if (err) { return done(err); }
         if (!user) {
           return done(null, false, { message: 'Nombre de usuario incorrecto' });
         }
-        if (!user.validPassword(password)) {
+        if (!user.validatePassword(password)) {
           return done(null, false, { message: 'Password incorrecto' });
         }
         return done(null, user);
@@ -23,7 +23,7 @@ passport.serializeUser(function(user,cb){
 });
 
 passport.deserializeUser(function(user,cb){
-    Usuario.findById(id,function(err,usuario){
+    Usuario.findById(user.id,function(err,usuario){
         cb(err,usuario)
     })
 });

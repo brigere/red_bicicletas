@@ -16,6 +16,9 @@ block content
           li.nav-item
             a.nav-link.js-scroll-trigger(href='#signup') Contacto
           li.nav-item
+          if locals.username
+            a.nav-link.js-scroll-trigger(href='/users/#')= username
+          else
             a.nav-link.js-scroll-trigger(href='/users/login') Ingresar
   // Masthead
   header.masthead
@@ -34,7 +37,7 @@ block content
             | Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
             a(href='https://startbootstrap.com/template-overviews/grayscale/') the preview page
             |                             . The theme is open source, and you can use it for any purpose, personal or commercial.
-      img.img-fluid(src='assets/img/ipad.png' alt='')
+      img.img-fluid(src='/assets/img/ipad.png' alt='')
   // Projects
   section#projects.projects-section.bg-light
     #mainMap
