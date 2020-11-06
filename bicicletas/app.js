@@ -17,6 +17,8 @@ app.use(session({
   secret:'r3dBicicleta5'
 }));
 
+app.set('secretKey','red-Bicicl3tas');
+
 // database connection
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);
@@ -48,6 +50,7 @@ app.use('/users',require('./routes/users'));
 app.use('/bicicletas',require('./routes/bicicletas'));
 app.use('/api/bicicletas',require('./routes/api/biciletaRouterApi'));
 app.use('/api/usuarios',require('./routes/api/usuarioRouterApi'))
+app.use('/api/auth',require('./routes/api/authRouter'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
