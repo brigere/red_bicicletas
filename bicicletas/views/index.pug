@@ -16,8 +16,8 @@ block content
           li.nav-item
             a.nav-link.js-scroll-trigger(href='#signup') Contacto
           li.nav-item
-          if locals.username
-            a.nav-link.js-scroll-trigger(href='/users/#')= username
+          if userName
+            a.nav-link.js-scroll-trigger(href='')= userName
           else
             a.nav-link.js-scroll-trigger(href='/users/login') Ingresar
   // Masthead

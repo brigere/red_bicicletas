@@ -1,25 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
-const passport = require('passport');
+const auth = require('../middlewares/auth');
 
 /* GET users listing. */
 router.get('/login',userController.login)
 
-router.post('/login',
-    function(req,res,next){
-        console.log(req.body.username+' '+req.body.password)
-        passport.authenticate('local',function(err,user,info){
-            if(err) return next(err);
-            if(!user) return res.render('users/login');
-            req.session.userId = user.id
-            req.logIn(user,function(e){
-                if(e) return next(e)
-                return res.redirect('/')
-            })
-        })(req,res,next);
-    },
-    userController.authUser)
+router.post('/login',auth.login,userController.authUser)
 
 router.get('/logout',userController.logout)
 

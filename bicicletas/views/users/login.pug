@@ -1,9 +1,9 @@
 extends layout
 
 block content
-    .container-fluid.h-100
-        .row
-            .col-md-4.m-auto
+    .container-fluid.align-items-center
+        .row.mt-4
+            .col-md-4.m-auto.bg-light.mt-2.rounded
                 form.form-signin.mt-4(action='/users/login' method='post')
                     //- img.mb-4(src='' alt='' width='72' height='72')
                     h2.mb-3.font-weight-normal.text-primary Ingresar
@@ -15,7 +15,7 @@ block content
                         label
                         input(type='checkbox' value='remember-me')
                         |  Recordarme
-                    button.mb-3.btn.btn-lg.btn-primary.btn-block(type='submit' value="Log In") Entrar
+                    button.mb-3.btn.btn-primary.btn-block(type='submit' value="Log In") Entrar
                     a(href='/users/register') Registrarse
 
                 p.mt-5.mb-3.text-muted &copy; 2017-2020

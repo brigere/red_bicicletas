@@ -13,4 +13,4 @@ $.ajax({
             let marker = new L.marker(bici.ubicacion,{title:bici.id}).addTo(map);
         });
     }
-})
+})  
