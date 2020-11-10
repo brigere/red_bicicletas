@@ -14,16 +14,16 @@ app.use(session({
   store:store,
   saveUninitialized:true,
   resave:'true',
-  secret:'r3dBicicleta5'
+  secret:process.env.SESSION_SECRET
 }));
 
-app.set('secretKey','red-Bicicl3tas');
+app.set('secretKey',process.env.SECRET_KEY);
 
 // database connection
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);
 mongoose.connect(
-  process.env.DB_HOST || "mongodb://localhost:27017/red_bicicletas",
+  process.env.DB_HOST,
   {useNewUrlParser: true, useUnifiedTopology: true},
   ()=>console.log('Database connected')
   );
