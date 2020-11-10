@@ -23,7 +23,7 @@ app.set('secretKey',process.env.SECRET_KEY);
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);
 mongoose.connect(
-  process.env.DB_HOST,
+  'mongodb+srv://red_bicicletas-user:jiHbbXXeYfcxfgSH@cluster0.7jb1n.mongodb.net/red_bicicletas',
   {useNewUrlParser: true, useUnifiedTopology: true},
   ()=>console.log('Database connected')
   );
