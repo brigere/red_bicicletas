@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon bicicletas/bin/www",
+    "start": "node bicicletas/bin/www",
     "dev": "nodemon bicicletas/bin/www",
     "test": "jasmine"
   },
